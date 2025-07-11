@@ -9,18 +9,21 @@ SRC = ft_isalpha.c \
 	ft_isprint.c \
 	ft_strlen.c \
 
+LIB = ./libft.h
+
 OBJ = $(SRC:.c=.o)
 
 CC = cc
+AR_COMMAND = ar rcs
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	$(AR_COMMAND) $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -I $(LIB) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
