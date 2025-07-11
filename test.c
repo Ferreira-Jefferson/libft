@@ -69,6 +69,14 @@ int	main(void)
 	assert(ft_strlen("cinco") == 5);
 	printf("OK \n");
 
+	// ft_memset
+	printf("ft_memset: ");
+	char str[] = "cinco";
+	char *result = (char *) ft_memset(str, 5, 5);
+	assert(result[0] == 5);
+	assert(result[4] == 5);
+	printf("OK \n");
+
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
 }
