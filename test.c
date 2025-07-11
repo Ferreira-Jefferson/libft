@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
 #include "libft.h"
 
 int	main(void)
@@ -91,6 +92,21 @@ int	main(void)
 	ft_bzero(int_bzero, sizeof(int_bzero));
 	assert(int_bzero[0] == 0);
 	assert(int_bzero[2] == 0);
+	printf("OK \n");
+
+	// ft_memcpy
+	printf("ft_memcpy: ");
+	char str_memcpy[] = "cinco";
+	char dst[] = "teste";
+	ft_memcpy(dst, str_memcpy, sizeof(str_memcpy));
+	assert(dst[0] == 'c');
+	assert(dst[4] == 'o');
+
+	int int_memcpy[] = {1, 2, 3};
+	int int_dst[3];
+	ft_memcpy(int_dst, int_memcpy, sizeof(int_memcpy));
+	assert(int_dst[0] == 1);
+	assert(int_dst[2] == 3);
 	printf("OK \n");
 
 	printf("\n*************** TESTS OK ************\n");
