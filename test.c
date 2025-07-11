@@ -75,6 +75,22 @@ int	main(void)
 	char *result = (char *) ft_memset(str, 5, 5);
 	assert(result[0] == 5);
 	assert(result[4] == 5);
+
+	assert(str[0] == 5);
+	assert(str[4] == 5);
+	printf("OK \n");
+
+	// ft_bzero
+	printf("ft_bzero: ");
+	char str_bzero[] = "cinco";
+	ft_bzero(str_bzero, 5);
+	assert(str_bzero[0] == 0);
+	assert(str_bzero[4] == 0);
+
+	int int_bzero[3] = {1, 2, 3};
+	ft_bzero(int_bzero, sizeof(int_bzero));
+	assert(int_bzero[0] == 0);
+	assert(int_bzero[2] == 0);
 	printf("OK \n");
 
 	printf("\n*************** TESTS OK ************\n");
