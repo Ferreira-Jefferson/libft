@@ -1,21 +1,10 @@
 NAME = libft.a
 
-SRC = ft_isalpha.c \
-	ft_isdigit.c \
-	ft_isalnum.c \
-	ft_isascii.c \
-	ft_isprint.c \
-	ft_strlen.c \
-	ft_memset.c \
-	ft_bzero.c \
-	ft_memcpy.c \
-	ft_memmove.c \
-	ft_toupper.c \
-	ft_tolower.c \
-
+SRC = $(wildcard *.c)
 LIB = ./libft.h
 
 OBJ = $(SRC:.c=.o)
+OBJS_DIR = objs
 
 CC = cc
 AR_COMMAND = ar rcs
@@ -25,6 +14,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR_COMMAND) $(NAME) $(OBJ)
+	mkdir -p $(OBJS_DIR)
+	mv *.o $(OBJS_DIR)
 
 %.o: %.c
 	$(CC) $(FLAGS) -I $(LIB) -c $< -o $@
@@ -34,11 +25,12 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rmdir $(OBJS_DIR) 2>/dev/null || true
 
 re: fclean all
 
-test: re clean
+test: re
 	@$(CC) $(FLAGS) test.c -L. -lft -o test
 	./test
 	@rm -f test
-	@make clean
+	@make fclean
