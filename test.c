@@ -163,6 +163,45 @@ void	test_ft_strlcpy(void)
 	printf("OK \n");
 }
 
+void	test_ft_strlcat(void)
+{	
+	printf("ft_strlcat: ");
+	char src[] = "um texto longo";
+	
+	// Teste 1: dst menor que src
+	char dst_less[10] = "1-";
+	size_t len = ft_strlcat(dst_less, src, sizeof(dst_less));
+	assert(dst_less[0] == '1');
+	assert(dst_less[2] == 'u');
+	assert(dst_less[9] == '\0');
+	assert(len == 16);
+
+	// Teste 2: dst igual a src
+	char dst_equal[15] = "";
+	len = ft_strlcat(dst_equal, src, sizeof(dst_equal));
+	assert(dst_equal[0] == 'u');
+	assert(dst_equal[13] == 'o');
+	assert(dst_equal[14] == '\0');
+	assert(len == 14);
+
+	// Teste 3: dst maior a src
+	char dst_bigger[50] = "um texto longo";
+	len = ft_strlcat(dst_bigger, src, sizeof(dst_bigger));
+	assert(dst_bigger[0] == 'u');
+	assert(dst_bigger[27] == 'o');
+	assert(dst_bigger[28] == '\0');
+	assert(len == 28);
+
+	// Teste 4: dst maior a src, mas sem espaço suficiente para src
+	char dst_bigger_but_not[20] = "um texto longo";
+	len = ft_strlcat(dst_bigger_but_not, src, sizeof(dst_bigger_but_not));
+	assert(dst_bigger_but_not[0] == 'u');
+	assert(dst_bigger_but_not[18] == 'e');
+	assert(dst_bigger_but_not[19] == '\0');
+	assert(len == 28);
+	printf("OK \n");
+}
+
 int	main(void)
 {
 	printf("\n\n*************** TESTS ***************\n\n");
@@ -180,6 +219,7 @@ int	main(void)
 	test_ft_memcpy();
 	test_ft_memmove();
 	test_ft_strlcpy();
+	test_ft_strlcat();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
