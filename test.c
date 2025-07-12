@@ -109,6 +109,26 @@ int	main(void)
 	assert(int_dst[2] == 3);
 	printf("OK \n");
 
+	// ft_memmove
+	printf("ft_memmove: ");
+	// Teste 1: Sobreposição - Destino ANTES da Origem (copia do final para o início)
+    char overlap_dst_before_src[] = "abcdefg";
+    ft_memmove(overlap_dst_before_src, overlap_dst_before_src + 2, 4); // Copia "cdef" para o início
+    assert(overlap_dst_before_src[0] == 'c');
+    assert(overlap_dst_before_src[3] == 'f');
+
+    // Teste 2: Sobreposição - Destino DEPOIS da Origem (copia do início para o final)
+    char overlap_dst_after_src[] = "abcdefg";
+    ft_memmove(overlap_dst_after_src + 2, overlap_dst_after_src, 4); // Copia "abcd" para 'cdef'
+    assert(overlap_dst_after_src[2] == 'a');
+    assert(overlap_dst_after_src[5] == 'd');
+
+    // Teste 3: Sem sobreposição (comportamento base)
+    char src_no_overlap[] = "hello";
+    char dst_no_overlap[6];
+    ft_memmove(dst_no_overlap, src_no_overlap, strlen(src_no_overlap) + 1);
+    assert(strcmp(dst_no_overlap, "hello") == 0);
+	printf("OK \n");
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
 }
