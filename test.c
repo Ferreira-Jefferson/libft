@@ -22,6 +22,7 @@ void	test_ft_strlcat(void);
 void	test_ft_strchr(void);
 void	test_ft_strrchr(void);
 void	test_ft_strncmp(void);
+void	test_ft_memchr(void);
 
 int	main(void)
 {
@@ -46,9 +47,30 @@ int	main(void)
 	test_ft_strchr();
 	test_ft_strrchr();
 	test_ft_strncmp();
+	test_ft_memchr();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void	test_ft_memchr(void)
+{
+	printf("ft_memchr: ");
+	char s1[] = "teste1";
+	char c = 't';
+
+	char *occ = (char *) ft_memchr(s1, c, sizeof(s1));
+	assert(occ == &s1[0]);
+
+	c = 's';
+	occ = (char *) ft_memchr(s1, c, sizeof(s1));
+	assert(occ == &s1[2]);
+
+	c = 'x';
+	occ = ft_memchr(s1, c, sizeof(s1));
+	assert(occ == NULL);
+
+	printf("OK \n");
 }
 
 void	test_ft_strncmp(void)
