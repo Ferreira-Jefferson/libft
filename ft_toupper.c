@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 07:43:24 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/11 07:48:37 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/07/13 07:47:08 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/07/13 07:55:05 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_toupper(int c)
 {
-	return (c > 64 && c < 91);
+	if (c > 96 && c < 123)
+		return (c - 32);
+	return (c);
 }
