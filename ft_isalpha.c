@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:00 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 07:56:21 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/13 08:13:03 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_isalpha(int c)
 {
-	return ((c > 64 && c < 91) || (c > 96 && c < 123));
+	return (ft_isupper(c) || ft_islower(c));
 }

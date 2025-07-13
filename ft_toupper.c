@@ -6,13 +6,15 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 07:47:08 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 07:55:05 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/13 08:16:33 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_toupper(int c)
 {
-	if (c > 96 && c < 123)
+	if (ft_islower(c))
 		return (c - 32);
 	return (c);
 }

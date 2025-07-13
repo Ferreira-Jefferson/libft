@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:24 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 07:50:43 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/13 08:24:37 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isupper(int c)
 {
-	return (c > 64 && c < 91);
+	return (c >= 'A' && c <= 'Z');
 }

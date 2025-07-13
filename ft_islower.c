@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:28 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 07:50:15 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/13 08:15:28 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_islower(int c)
 {
-	return (c > 96 && c < 123);
+	return (c >= 'a' && c <= 'z');
 }

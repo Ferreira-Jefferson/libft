@@ -6,13 +6,15 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 07:48:26 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 07:55:01 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/13 08:16:17 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_tolower(int c)
 {
-	if (c > 64 && c < 91)
+	if (ft_isupper(c))
 		return (c + 32);
 	return (c);
 }

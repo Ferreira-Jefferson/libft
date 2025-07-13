@@ -3,25 +3,84 @@
 #include <string.h>
 #include "libft.h"
 
-void test_ft_toupper(void)
+void	test_ft_isupper(void);
+void	test_ft_islower(void);
+void	test_ft_toupper(void);
+void	test_ft_tolower(void);
+void	test_ft_isalpha(void);
+void	test_ft_isdigit(void);
+void	test_ft_isalnum(void);
+void	test_ft_isascii(void);
+void	test_ft_isprint(void);
+void	test_ft_strlen(void);
+void	test_ft_memset(void);
+void	test_ft_bzero(void);
+void	test_ft_memcpy(void);
+void	test_ft_memmove(void);
+void	test_ft_strlcpy(void);
+void	test_ft_strlcat(void);
+
+int	main(void)
+{
+	printf("\n\n*************** TESTS ***************\n\n");
+
+	test_ft_isupper();
+	test_ft_islower();
+	test_ft_toupper();
+	test_ft_tolower();
+	test_ft_isalpha();
+	test_ft_isdigit();
+	test_ft_isalnum();
+	test_ft_isascii();
+	test_ft_isprint();
+	test_ft_strlen();
+	test_ft_memset();
+	test_ft_bzero();
+	test_ft_memcpy();
+	test_ft_memmove();
+	test_ft_strlcpy();
+	test_ft_strlcat();
+
+	printf("\n*************** TESTS OK ************\n");
+	return (0);
+}
+void	test_ft_isupper(void)
+{
+	printf("ft_isupper: ");
+	assert(ft_isupper('A') == 1);
+	assert(ft_isupper('a') == 0);
+	assert(ft_isupper('1') == 0);
+	printf("OK \n");
+}
+
+void	test_ft_islower(void)
+{
+	printf("ft_islower: ");
+	assert(ft_islower('A') == 0);
+	assert(ft_islower('a') == 1);
+	assert(ft_islower('1') == 0);
+	printf("OK \n");
+}
+
+void	test_ft_toupper(void)
 {
 	printf("ft_toupper: ");
-	assert(ft_toupper('A') == 1);
-	assert(ft_toupper('a') == 0);
-	assert(ft_toupper('1') == 0);
+	assert(ft_toupper('A') == 'A');
+	assert(ft_toupper('a') == 'A');
+	assert(ft_toupper('1') == '1');
 	printf("OK \n");
 }
 
-void test_ft_tolower(void)
+void	test_ft_tolower(void)
 {
 	printf("ft_tolower: ");
-	assert(ft_tolower('A') == 0);
-	assert(ft_tolower('a') == 1);
-	assert(ft_tolower('1') == 0);
+	assert(ft_tolower('A') == 'a');
+	assert(ft_tolower('a') == 'a');
+	assert(ft_tolower('1') == '1');
 	printf("OK \n");
 }
 
-void test_ft_isalpha(void)
+void	test_ft_isalpha(void)
 {
 	printf("ft_isalpha: ");
 	assert(ft_isalpha('A') == 1);
@@ -31,7 +90,7 @@ void test_ft_isalpha(void)
 	printf("OK \n");
 }
 
-void test_ft_isdigit(void)
+void	test_ft_isdigit(void)
 {
 	printf("ft_isdigit: ");
 	assert(ft_isdigit('A') == 0);
@@ -200,27 +259,4 @@ void	test_ft_strlcat(void)
 	assert(dst_bigger_but_not[19] == '\0');
 	assert(len == 28);
 	printf("OK \n");
-}
-
-int	main(void)
-{
-	printf("\n\n*************** TESTS ***************\n\n");
-
-	test_ft_toupper();
-	test_ft_tolower();
-	test_ft_isalpha();
-	test_ft_isdigit();
-	test_ft_isalnum();
-	test_ft_isascii();
-	test_ft_isprint();
-	test_ft_strlen();
-	test_ft_memset();
-	test_ft_bzero();
-	test_ft_memcpy();
-	test_ft_memmove();
-	test_ft_strlcpy();
-	test_ft_strlcat();
-
-	printf("\n*************** TESTS OK ************\n");
-	return (0);
 }
