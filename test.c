@@ -20,6 +20,7 @@ void	test_ft_memmove(void);
 void	test_ft_strlcpy(void);
 void	test_ft_strlcat(void);
 void	test_ft_strchr(void);
+void	test_ft_strrchr(void);
 
 int	main(void)
 {
@@ -42,10 +43,21 @@ int	main(void)
 	test_ft_strlcpy();
 	test_ft_strlcat();
 	test_ft_strchr();
+	test_ft_strrchr();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
 }
+void	test_ft_strrchr(void)
+{
+	printf("ft_strrchr: ");
+	char str[] = "uma frase de teste";
+
+	char *ptr_first_e = ft_strrchr(str, 'e');	
+	assert(ptr_first_e == &str[17]);
+	printf("OK \n");
+}
+
 void	test_ft_strchr(void)
 {
 	printf("ft_strchr: ");
