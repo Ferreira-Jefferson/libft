@@ -21,6 +21,7 @@ void	test_ft_strlcpy(void);
 void	test_ft_strlcat(void);
 void	test_ft_strchr(void);
 void	test_ft_strrchr(void);
+void	test_ft_strncmp(void);
 
 int	main(void)
 {
@@ -44,10 +45,29 @@ int	main(void)
 	test_ft_strlcat();
 	test_ft_strchr();
 	test_ft_strrchr();
+	test_ft_strncmp();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
 }
+
+void	test_ft_strncmp(void)
+{
+	printf("ft_strncmp: ");
+	char s1[] = "teste1";
+	char s2[] = "teste3";
+
+	int cmp = ft_strncmp(s1, s2, 5);
+	assert(cmp == 0);
+
+	cmp = ft_strncmp(s1, s2, 6);
+	assert(cmp == -2);
+
+	cmp = ft_strncmp(s2, s1, 6);
+	assert(cmp == 2);
+	printf("OK \n");
+}
+
 void	test_ft_strrchr(void)
 {
 	printf("ft_strrchr: ");
