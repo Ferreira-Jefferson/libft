@@ -23,6 +23,7 @@ void	test_ft_strchr(void);
 void	test_ft_strrchr(void);
 void	test_ft_strncmp(void);
 void	test_ft_memchr(void);
+void	test_ft_memcmp(void);
 
 int	main(void)
 {
@@ -48,9 +49,31 @@ int	main(void)
 	test_ft_strrchr();
 	test_ft_strncmp();
 	test_ft_memchr();
+	test_ft_memcmp();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void	test_ft_memcmp(void)
+{
+	printf("ft_memcmp: ");
+	char s1[] = "teste1";
+	char s2[] = "teste3";
+
+	int cmp = ft_memcmp(s1, s2, 5);
+	assert(cmp == 0);
+
+	cmp = ft_memcmp(s1, s2, 6);
+	assert(cmp == -2);
+
+	cmp = ft_memcmp(s2, s1, 6);
+	assert(cmp == 2);
+
+	// ft_memcmp lê até o len passsado, sem considerar o \0
+	cmp = ft_memcmp(s1, s2, 8);
+	assert(cmp == -2);
+	printf("OK \n");
 }
 
 void	test_ft_memchr(void)
