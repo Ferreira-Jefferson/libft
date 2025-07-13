@@ -19,6 +19,7 @@ void	test_ft_memcpy(void);
 void	test_ft_memmove(void);
 void	test_ft_strlcpy(void);
 void	test_ft_strlcat(void);
+void	test_ft_strchr(void);
 
 int	main(void)
 {
@@ -40,10 +41,24 @@ int	main(void)
 	test_ft_memmove();
 	test_ft_strlcpy();
 	test_ft_strlcat();
+	test_ft_strchr();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
 }
+void	test_ft_strchr(void)
+{
+	printf("ft_strchr: ");
+	char str[] = "uma frase de teste";
+
+	char *ptr_first_e = ft_strchr(str, 'e');	
+	assert(ptr_first_e == &str[8]);
+
+	char *ptr_end_str = ft_strchr(str, '\0');
+	assert(ptr_end_str == &str[18]);
+	printf("OK \n");
+}
+
 void	test_ft_isupper(void)
 {
 	printf("ft_isupper: ");
