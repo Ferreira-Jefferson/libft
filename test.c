@@ -24,6 +24,7 @@ void	test_ft_strrchr(void);
 void	test_ft_strncmp(void);
 void	test_ft_memchr(void);
 void	test_ft_memcmp(void);
+void	test_ft_strstr(void);
 
 int	main(void)
 {
@@ -50,9 +51,36 @@ int	main(void)
 	test_ft_strncmp();
 	test_ft_memchr();
 	test_ft_memcmp();
+	test_ft_strstr();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void	test_ft_strstr(void)
+{
+	printf("ft_strstr: ");
+	char s1[] = "foo bar baz";
+	char s2[] = "bar";
+
+	char s2_empty[] = "";
+	char *ret = ft_strstr(s1, s2_empty);
+	assert(ret == s1);
+
+	char s1_empty[] = "";
+	ret = ft_strstr(s1_empty, s2);
+	assert(ret == NULL);
+
+	ret = ft_strstr(s1, s2);
+	assert(ret == &s1[4]);
+
+	char *s2_diff = "xyz";
+	ret = ft_strstr(s1, s2_diff);
+	assert(ret == NULL);
+
+	ret = ft_strstr(s1_empty, s2_empty);
+	assert(ret == s1_empty);
+	printf("OK \n");
 }
 
 void	test_ft_memcmp(void)
@@ -130,6 +158,9 @@ void	test_ft_strchr(void)
 
 	char *ptr_first_e = ft_strchr(str, 'e');	
 	assert(ptr_first_e == &str[8]);
+
+	char *ptr_first_diff = ft_strchr(str, 'x');	
+	assert(ptr_first_diff == NULL);
 
 	char *ptr_end_str = ft_strchr(str, '\0');
 	assert(ptr_end_str == &str[18]);
