@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 15:58:59 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/13 17:34:25 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <limits.h>
 
+int		ft_isspace(int c);
 int		ft_islower(int c);
 int		ft_isupper(int c);
 int		ft_isalpha(int c);
@@ -37,5 +39,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t len);
 void	*ft_memchr(const void *b, int c, size_t len);
 int		ft_memcmp(const void *b1, const void *b2, size_t len);
 char	*ft_strstr(const char *big, const char *little);
+int		ft_atoi(const char *nptr);
 
 #endif

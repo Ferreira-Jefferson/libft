@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 #include "libft.h"
 
 void	test_ft_isupper(void);
@@ -25,6 +26,7 @@ void	test_ft_strncmp(void);
 void	test_ft_memchr(void);
 void	test_ft_memcmp(void);
 void	test_ft_strstr(void);
+void	test_ft_atoi(void);
 
 int	main(void)
 {
@@ -52,9 +54,51 @@ int	main(void)
 	test_ft_memchr();
 	test_ft_memcmp();
 	test_ft_strstr();
+	test_ft_atoi();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void	test_ft_atoi(void)
+{
+	// Definições das strings de teste (assumindo que você as tenha definido antes)
+	char s1[] = "0";
+	char s2[] = "0123";
+	char s3[] = "abc0123";
+	char s4[] = "-abc0123";
+	char s5[] = "  \t\n\r\f\v123";
+	char s6[] = "  -456";
+	char s7[] = "+789";
+	char s8[] = "123teste";
+	char s9[] = "  \t\n\r\f\v";
+	char s10[] = "";
+	char s11[] = "-2147483648";
+	char s12[] = "2147483647";
+	char s13[] = "999999999999";
+	char s14[] = "-999999999999";
+	char s15[] = "++123";
+	char s16[] = "--456";
+	char s17[] = "12-34";
+
+	// Testes:
+	assert(ft_atoi(s1) == 0);
+	assert(ft_atoi(s2) == 123);
+	assert(ft_atoi(s3) == 0); // atoi para ao encontrar 'a'
+	assert(ft_atoi(s4) == 0); // atoi para ao encontrar 'a' após o sinal
+	assert(ft_atoi(s5) == 123);
+	assert(ft_atoi(s6) == -456);
+	assert(ft_atoi(s7) == 789);
+	assert(ft_atoi(s8) == 123); // atoi para ao encontrar 't'
+	assert(ft_atoi(s9) == 0);
+	assert(ft_atoi(s10) == 0);
+	assert(ft_atoi(s11) == INT_MIN); // Valor mínimo de int
+	assert(ft_atoi(s12) == INT_MAX); // Valor máximo de int
+	assert(ft_atoi(s13) == INT_MAX); // Overflow positivo
+	assert(ft_atoi(s14) == INT_MIN); // Overflow negativo
+	assert(ft_atoi(s15) == 0); // Múltiplos sinais (o padrão é parar no segundo)
+	assert(ft_atoi(s16) == 0); // Múltiplos sinais (o padrão é parar no segundo)
+	assert(ft_atoi(s17) == 12); // Sinal no meio da string (atoi para antes)
 }
 
 void	test_ft_strstr(void)
