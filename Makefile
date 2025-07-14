@@ -30,7 +30,7 @@ fclean: clean
 re: fclean all
 
 test: re
-	@$(CC) $(FLAGS) test.c -L. -lft -o test
+	@$(CC) $(FLAGS) test.c -L. -lbsd -lft -o test
 	./test
 	@rm -f test
 	@make fclean

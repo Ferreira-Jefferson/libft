@@ -3,6 +3,7 @@
 #include <string.h>
 #include <limits.h>
 #include "libft.h"
+#include <bsd/string.h>
 
 void	test_ft_isupper(void);
 void	test_ft_islower(void);
@@ -168,21 +169,75 @@ void	test_ft_memchr(void)
 	printf("OK \n");
 }
 
-void	test_ft_strncmp(void)
+void    test_ft_strncmp(void)
 {
-	printf("ft_strncmp: ");
-	char s1[] = "teste1";
-	char s2[] = "teste3";
+    printf("ft_strncmp: ");
+    char s1[] = "teste1";
+    char s2[] = "teste3";
+    char s3[] = "teste";
+    char s4[] = "test";
+    char s5[] = ""; // String vazia
 
-	int cmp = ft_strncmp(s1, s2, 5);
-	assert(cmp == 0);
+    int cmp;
 
-	cmp = ft_strncmp(s1, s2, 6);
-	assert(cmp == -2);
+    // Teste 1: Comparar partes iguais
+    cmp = strncmp(s1, s2, 5);
+    assert(cmp == 0);
 
-	cmp = ft_strncmp(s2, s1, 6);
-	assert(cmp == 2);
-	printf("OK \n");
+    // Teste 2: Comparar strings diferentes no final
+    cmp = strncmp(s1, s2, 6);
+    assert(cmp == -2);
+
+    // Teste 3: Comparar strings diferentes no final (ordem inversa)
+    cmp = strncmp(s2, s1, 6);
+    assert(cmp == 2);
+
+    // Teste 4: Comparar strings de tamanhos diferentes, prefixo igual
+    cmp = strncmp(s1, s3, 5);
+    assert(cmp == 0);
+
+    // Teste 5: Comparar strings de tamanhos diferentes, prefixo igual, mas strlen de s3 é menor que s1
+    cmp = strncmp(s3, s1, 6); // Compara "teste\0" com "teste1"
+    assert(cmp < 0); // Esperado que 's3' seja menor devido ao '\0'
+
+    // Teste 6: Comparar prefixos curtos iguais
+    cmp = strncmp(s1, s2, 3);
+    assert(cmp == 0);
+
+    // Teste 7: Comparar com len=0
+    cmp = strncmp(s1, s2, 0);
+    assert(cmp == 0);
+
+    // Teste 8: Comparar com uma string mais curta (s4 = "test")
+    cmp = strncmp(s1, s4, 4);
+    assert(cmp == 0);
+
+    // Teste 9: Comparar com uma string mais curta, len passa do fim
+    cmp = strncmp(s1, s4, 5); // Compara "teste" com "test\0"
+    assert(cmp > 0); // Esperado que 's1' seja maior que 's4' devido ao '\0'
+
+    // Teste 10: Comparar com strings vazias
+    cmp = strncmp(s5, s5, 1);
+    assert(cmp == 0);
+
+    // Teste 11: Comparar string vazia com string não vazia
+    cmp = strncmp(s5, s1, 1);
+    assert(cmp < 0); // Esperado que '\0' seja menor que 't'
+
+    // Teste 12: Comparar string não vazia com string vazia
+    cmp = strncmp(s1, s5, 1);
+    assert(cmp > 0); // Esperado que 't' seja maior que '\0'
+
+    // Teste 13: Comparar com valores ASCII diferentes
+    char s6[] = "abc";
+    char s7[] = "abd";
+    cmp = strncmp(s6, s7, 3);
+    assert(cmp < 0); // 'c' < 'd'
+
+    cmp = strncmp(s7, s6, 3);
+    assert(cmp > 0); // 'd' > 'c'
+
+    printf("OK \n");
 }
 
 void	test_ft_strrchr(void)
@@ -379,13 +434,47 @@ void	test_ft_memmove(void)
 void	test_ft_strlcpy(void)
 {	
 	printf("ft_strlcpy: ");
-	char src[] = "um texto longo";
-	char dst[5];
-	size_t len_src = ft_strlcpy(dst, src, sizeof(dst));
-	assert(dst[0] == 'u');
-	assert(dst[3] == 't');
-	assert(dst[4] == '\0');
-	assert(len_src == 14);
+    // Cenário 1: src maior que dstsize
+    char src1[] = "um texto longo"; 
+    char dst1[5]; 
+    size_t len_src1 = ft_strlcpy(dst1, src1, sizeof(dst1));
+    assert(dst1[0] == 'u');
+    assert(dst1[3] == 't');
+    assert(dst1[4] == '\0'); 
+    assert(len_src1 == strlen(src1)); 
+    
+    // Cenário 2: dstsize = 0
+    char src2[] = "abc"; 
+    char dst2[5]; 
+    size_t len_src2 = ft_strlcpy(dst2, src2, 0);
+     assert(dst2[0] != 'a'); 
+     assert(dst2[0] == '\0'); 
+    assert(len_src2 == strlen(src2));
+    
+    // Cenário 3: dstsize = 1 (apenas espaço para \0)
+    char src3[] = "hello";
+    char dst3[5];
+    size_t len_src3 = ft_strlcpy(dst3, src3, 1);
+    assert(dst3[0] == '\0');
+    assert(len_src3 == strlen(src3));
+    
+    // Cenário 4: src é string vazia
+    char src4[] = ""; 
+    char dst4[5] = "xxxxx"; 
+    size_t len_src4 = ft_strlcpy(dst4, src4, sizeof(dst4));
+    assert(dst4[0] == '\0'); 
+    assert(len_src4 == strlen(src4)); 
+    
+    // Cenário 5: src cabe completamente e dstsize eh maior que strlen(src)
+    char src5[] = "curto";
+    char dst5[10]; 
+    memset(dst5, 'Z', sizeof(dst5)); 
+    size_t len_src5 = ft_strlcpy(dst5, src5, sizeof(dst5));
+    assert(dst5[0] == 'c');
+    assert(dst5[4] == 'o');
+    assert(dst5[5] == '\0'); 
+    assert(dst5[6] == 'Z'); 
+    assert(len_src5 == strlen(src5)); 
 	printf("OK \n");
 }
 
@@ -425,5 +514,11 @@ void	test_ft_strlcat(void)
 	assert(dst_bigger_but_not[18] == 'e');
 	assert(dst_bigger_but_not[19] == '\0');
 	assert(len == 28);
+
+	 // Teste 5: Ao invés de colocar o \0 no dim de dst, dá um comportamento indefinido.
+    char dst_full_test[10];
+    ft_memset(dst_full_test, 'r', 10); 
+    len = ft_strlcat(dst_full_test, src, 5);
+    assert(len == (size_t)5 + strlen(src));
 	printf("OK \n");
 }
