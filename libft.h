@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 17:34:25 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/14 14:51:19 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	*ft_memchr(const void *b, int c, size_t len);
 int		ft_memcmp(const void *b1, const void *b2, size_t len);
 char	*ft_strstr(const char *big, const char *little);
 int		ft_atoi(const char *nptr);
+void	*ft_calloc(size_t number, size_t size);
 
 #endif

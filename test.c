@@ -28,6 +28,7 @@ void	test_ft_memchr(void);
 void	test_ft_memcmp(void);
 void	test_ft_strstr(void);
 void	test_ft_atoi(void);
+void	test_ft_calloc(void);
 
 int	main(void)
 {
@@ -56,6 +57,7 @@ int	main(void)
 	test_ft_memcmp();
 	test_ft_strstr();
 	test_ft_atoi();
+	test_ft_calloc();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
@@ -100,6 +102,25 @@ void	test_ft_atoi(void)
 	assert(ft_atoi(s15) == 0); // Múltiplos sinais (o padrão é parar no segundo)
 	assert(ft_atoi(s16) == 0); // Múltiplos sinais (o padrão é parar no segundo)
 	assert(ft_atoi(s17) == 12); // Sinal no meio da string (atoi para antes)
+}
+
+void	test_ft_calloc(void)
+{
+	printf("ft_calloc: ");
+	int	*i;
+
+	i = ft_calloc(3, sizeof(int));
+	if (!i)
+	{
+		assert(i == NULL);
+		return ;
+	}
+	i[0] = 1;
+	i[1] = 2;
+	assert(i[0] == 1);
+	assert(i[1] == 2);
+	assert(i[2] == 0);
+	printf("OK \n");
 }
 
 void	test_ft_strstr(void)
