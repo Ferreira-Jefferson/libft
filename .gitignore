@@ -1,3 +1,5 @@
 *.a
 *.o
+test*
 Makefile.study
+objs
