@@ -34,6 +34,7 @@ void	test_ft_strdup(void);
 void	test_ft_substr(void);
 void	test_ft_strjoin(void);
 void	test_ft_strtrim(void);
+void	test_ft_split(void);
 
 int	main(void)
 {
@@ -67,9 +68,62 @@ int	main(void)
 	test_ft_substr();
 	test_ft_strjoin();
 	test_ft_strtrim();
+	test_ft_split();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+void	test_ft_split(void)
+{
+	printf("ft_split: ");
+	
+	char *s1;
+	char c = ' ';
+	char **splited_list;
+
+	// s1 nula
+	s1 = NULL;
+	splited_list = ft_split(s1, c);
+	assert(splited_list == NULL);
+	
+
+	// s1 vazia
+	s1 = ft_strdup("");
+	splited_list = ft_split(s1, c);
+	assert(splited_list == NULL);
+
+	// s1 com uma palavra
+	s1 = ft_strdup("palavra");
+	splited_list = ft_split(s1, c);
+	assert(ft_strncmp(splited_list[0], s1, ft_strlen(s1)) == 0);
+	assert(splited_list[0] == NULL);
+
+	// s1 com mais de duas palavras
+	s1 = ft_strdup("palavra p4l4vr4");
+	splited_list = ft_split(s1, c);
+	assert(ft_strncmp(splited_list[0], "palavra", ft_strlen("palavra")) == 0);
+	assert(ft_strncmp(splited_list[1], "p4l4vr4", ft_strlen("p4l4vr4")) == 0);
+	assert(splited_list[2] == NULL);
+
+	// s1 com mais de três palavras
+	s1 = ft_strdup("palavra p4l4vr4 p@1454@");
+	splited_list = ft_split(s1, c);
+	assert(ft_strncmp(splited_list[0], "palavra", ft_strlen("palavra")) == 0);
+	assert(ft_strncmp(splited_list[1], "p4l4vr4", ft_strlen("p4l4vr4")) == 0);
+	assert(ft_strncmp(splited_list[2], "p@1454@", ft_strlen("p@1454@")) == 0);
+	assert(splited_list[3] == NULL);
+
+	// sem o caracter de split
+	s1 = ft_strdup("palavra p4l4vr4 p@1454@");
+	c = '*';
+	splited_list = ft_split(s1, c);
+	assert(ft_strncmp(splited_list[0], "palavra", ft_strlen("palavra")) == 0);
+	assert(ft_strncmp(splited_list[1], "p4l4vr4", ft_strlen("p4l4vr4")) == 0);
+	assert(ft_strncmp(splited_list[2], "p@1454@", ft_strlen("p@1454@")) == 0);
+	assert(splited_list[3] == NULL);
+
+	printf("OK \n");
+	free(s1);
 }
 
 void	test_ft_strtrim(void)
