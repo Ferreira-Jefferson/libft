@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 08:29:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 09:01:55 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/14 16:19:27 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 	aux_s = (char *) s;
 	while (*aux_s)
 	{
-		if (*aux_s == c)
+		if (*aux_s == (char)c)
 			return (aux_s);
 		aux_s++;
 	}

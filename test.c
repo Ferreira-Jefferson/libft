@@ -30,6 +30,7 @@ void	test_ft_strstr(void);
 void	test_ft_atoi(void);
 void	test_ft_calloc(void);
 void	test_ft_strdup(void);
+void	test_ft_substr(void);
 
 int	main(void)
 {
@@ -60,9 +61,15 @@ int	main(void)
 	test_ft_atoi();
 	test_ft_calloc();
 	test_ft_strdup();
+	test_ft_substr();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void	test_ft_substr(void)
+{
+	
 }
 
 void	test_ft_strdup(void)
