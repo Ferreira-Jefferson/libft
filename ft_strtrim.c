@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:05:05 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/15 15:33:29 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:35:55 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	size;
 	char	*trim;
 
-	if(!s1 || !set)
+	if (!s1 || !set)
 		return (ft_strdup(s1));
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
