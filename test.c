@@ -33,6 +33,7 @@ void	test_ft_calloc(void);
 void	test_ft_strdup(void);
 void	test_ft_substr(void);
 void	test_ft_strjoin(void);
+void	test_ft_strtrim(void);
 
 int	main(void)
 {
@@ -65,9 +66,51 @@ int	main(void)
 	test_ft_strdup();
 	test_ft_substr();
 	test_ft_strjoin();
+	test_ft_strtrim();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void	test_ft_strtrim(void)
+{
+	printf("ft_strtrim: ");
+	
+	char *s1, *set;
+
+	//parametros nulos
+	s1 = NULL;
+	set = NULL;
+	ft_strtrim(s1, set);
+	assert(s1 == NULL);
+
+	//parametros vazios
+	s1 = ft_strdup("");
+	set = ft_strdup("");
+	ft_strtrim(s1, set);
+	assert(s1[0] == '\0');
+
+	//apenas set vazio
+	s1 = ft_strdup("****");
+	set = ft_strdup("*");
+	char *result = ft_strtrim(s1, set);
+	assert(ft_strncmp(result, "", sizeof(result)) == 0);
+
+	//cenário perfeito para um set
+	s1 = ft_strdup("**#*Hello*World*#**");
+	set = ft_strdup("*");
+	ft_strtrim(s1, set);
+	assert(ft_strncmp(s1, "#*Hello*World*#", ft_strlen(s1)));
+
+	//cenário perfeito para um set
+	s1 = ft_strdup("**#*Hello*World*#**");
+	set = ft_strdup("*#");
+	ft_strtrim(s1, set);
+	assert(ft_strncmp(s1, "Hello*World", ft_strlen(s1)));
+
+	printf("OK \n");
+	free(s1);
+	free(set);
 }
 
 void	test_ft_strjoin(void)
