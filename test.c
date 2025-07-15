@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <limits.h>
 #include "libft.h"
@@ -67,9 +68,71 @@ int	main(void)
 	return (0);
 }
 
-void	test_ft_substr(void)
+void    test_ft_substr(void)
 {
-	
+    printf("ft_substr: ");
+    char    *sub;
+    char    s[] = "Hello World"; // len 11
+
+    // Teste 1: Substring no meio
+    sub = ft_substr(s, 6, 5); // "World"
+    assert(sub != NULL);
+    assert(sub[0] == 'W');
+    assert(sub[4] == 'd');
+    assert(sub[5] == '\0');
+    assert(strlen(sub) == 5);
+    free(sub);
+
+    // Teste 2: Substring do início
+    sub = ft_substr(s, 0, 5); // "Hello"
+    assert(sub != NULL);
+    assert(sub[0] == 'H');
+    assert(sub[4] == 'o');
+    assert(sub[5] == '\0');
+    assert(strlen(sub) == 5);
+    free(sub);
+
+    // Teste 3: Substring até o final, 'len' grande
+    sub = ft_substr(s, 6, 100); // "World" (até o final de s)
+    assert(sub != NULL);
+    assert(sub[0] == 'W');
+    assert(sub[4] == 'd');
+    assert(sub[5] == '\0');
+    assert(strlen(sub) == 5);
+    free(sub);
+
+    // Teste 4: 'start' maior que o comprimento da string
+    sub = ft_substr(s, 20, 5); // "" (string vazia)
+    assert(sub != NULL);
+    assert(sub[0] == '\0');
+    assert(strlen(sub) == 0);
+    free(sub);
+
+    // Teste 5: 'len' menor que o restante disponível
+    sub = ft_substr(s, 0, 3); // "Hel"
+    assert(sub != NULL);
+    assert(sub[0] == 'H');
+    assert(sub[2] == 'l');
+    assert(sub[3] == '\0');
+    assert(strlen(sub) == 3);
+    free(sub);
+
+    // Teste 6: String vazia como entrada
+    char empty_s[] = "";
+    sub = ft_substr(empty_s, 0, 5); // ""
+    assert(sub != NULL);
+    assert(sub[0] == '\0');
+    assert(strlen(sub) == 0);
+    free(sub);
+
+    // Teste 7: start no final da string
+    sub = ft_substr(s, 11, 5); // "" (string vazia, porque start é o '\0')
+    assert(sub != NULL);
+    assert(sub[0] == '\0');
+    assert(strlen(sub) == 0);
+    free(sub);
+
+    printf("OK \n");
 }
 
 void	test_ft_strdup(void)
