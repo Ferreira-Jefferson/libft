@@ -32,6 +32,7 @@ void	test_ft_atoi(void);
 void	test_ft_calloc(void);
 void	test_ft_strdup(void);
 void	test_ft_substr(void);
+void	test_ft_strjoin(void);
 
 int	main(void)
 {
@@ -63,9 +64,44 @@ int	main(void)
 	test_ft_calloc();
 	test_ft_strdup();
 	test_ft_substr();
+	test_ft_strjoin();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void	test_ft_strjoin(void)
+{
+	printf("ft_strjoin: ");
+	char *s1, *s2;
+
+	//parametros nulos
+	s1 = NULL;
+	s2 = NULL;
+	ft_strjoin(s1, s2);
+	assert(s1 == NULL);
+
+	//parametros vazios
+	s1 = ft_strdup("");
+	s2 = ft_strdup("");
+	ft_strjoin(s1, s2);
+	assert(s1[0] == '\0');
+
+	//vetor de caracteres
+	char s1_not_str[] = {'N', 'O', 'T'};
+	char s2_not_str[] = {'S', 'T', 'R', 'I', 'N', 'G'};
+	ft_strjoin(s1_not_str, s2_not_str);
+	assert(s1_not_str); // Comportamento indefinido
+
+	//cenario perfeito
+	s1 = ft_strdup("Hello");
+	s2 = ft_strdup("World");
+	ft_strjoin(s1, s2);
+	assert(ft_strncmp(s1, "Hello World", sizeof(s1))); 
+
+	printf("OK \n");
+	free(s1);
+	free(s2);
 }
 
 void    test_ft_substr(void)
