@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:35:54 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/15 10:25:38 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:50:28 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_s = ft_strlen(s);
 	if (start > size_s)
 		return (ft_strdup(""));
-	if(start + len > size_s)
+	if (start + len > size_s)
 		len = size_s - start;
 	sub = (char *) malloc((len + 1) * sizeof(char));
 	if (!sub)
