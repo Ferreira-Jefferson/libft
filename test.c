@@ -35,6 +35,7 @@ void	test_ft_substr(void);
 void	test_ft_strjoin(void);
 void	test_ft_strtrim(void);
 void	test_ft_split(void);
+void	test_ft_itoa(void);
 
 int	main(void)
 {
@@ -69,10 +70,56 @@ int	main(void)
 	test_ft_strjoin();
 	test_ft_strtrim();
 	test_ft_split();
+	test_ft_itoa();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
 }
+
+void    test_ft_itoa(void)
+{
+    printf("ft_itoa: ");
+
+    char *result;
+
+    // Teste com número positivo
+    result = ft_itoa(123);
+    assert(strcmp(result, "123") == 0);
+    free(result);
+
+    // Teste com número negativo
+    result = ft_itoa(-456);
+    assert(strcmp(result, "-456") == 0);
+    free(result);
+
+    // Teste com zero
+    result = ft_itoa(0);
+    assert(strcmp(result, "0") == 0);
+    free(result);
+
+    // Teste com o menor inteiro (INT_MIN)
+    result = ft_itoa(-2147483648); // Ou use INT_MIN se a macro estiver disponível
+    assert(strcmp(result, "-2147483648") == 0);
+    free(result);
+
+    // Teste com o maior inteiro (INT_MAX)
+    result = ft_itoa(2147483647); // Ou use INT_MAX se a macro estiver disponível
+    assert(strcmp(result, "2147483647") == 0);
+    free(result);
+
+    // Teste com número de um dígito positivo
+    result = ft_itoa(7);
+    assert(strcmp(result, "7") == 0);
+    free(result);
+
+    // Teste com número de um dígito negativo
+    result = ft_itoa(-9);
+    assert(strcmp(result, "-9") == 0);
+    free(result);
+
+    printf("OK\n");
+}
+
 void    test_ft_split(void)
 {
     printf("ft_split: ");
