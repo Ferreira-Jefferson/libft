@@ -43,11 +43,16 @@ void	test_ft_strmapi(void);
 void	test_ft_putchar_fd(void);
 void	test_ft_putstr_fd(void);
 void	test_ft_putendl_fd(void);
+void	test_ft_putnbr_fd(void);
+void	test_ft_putnbr_fd(void);
 
 int	main(void)
 {
 	printf("\n\n*************** TESTS ***************\n\n");
 
+	ft_putnbr_fd(INT_MIN, 1);
+	printf("\n");
+	return (0);
 	test_ft_isupper();
 	test_ft_islower();
 	test_ft_toupper();
@@ -83,9 +88,100 @@ int	main(void)
 	test_ft_putstr_fd();
 	test_ft_putendl_fd();
 	test_ft_putendl_fd();
+	test_ft_putnbr_fd();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void test_ft_putnbr_fd(void)
+{
+    printf("ft_putnbr_fd: ");
+
+    int     fd;
+    char    buffer[20]; // Buffer para ler o conteúdo do arquivo
+    ssize_t bytes_read;
+    char    expected[20];
+
+    // Teste 1: Número positivo
+    fd = open("test_nbr_pos.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putnbr_fd(12345, fd);
+    close(fd);
+
+    fd = open("test_nbr_pos.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    snprintf(expected, sizeof(expected), "%d", 12345);
+    assert(strcmp(buffer, expected) == 0);
+    close(fd);
+    unlink("test_nbr_pos.txt");
+
+    // Teste 2: Número negativo
+    fd = open("test_nbr_neg.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putnbr_fd(-6789, fd);
+    close(fd);
+
+    fd = open("test_nbr_neg.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    snprintf(expected, sizeof(expected), "%d", -6789);
+    assert(strcmp(buffer, expected) == 0);
+    close(fd);
+    unlink("test_nbr_neg.txt");
+
+    // Teste 3: Zero
+    fd = open("test_nbr_zero.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putnbr_fd(0, fd);
+    close(fd);
+
+    fd = open("test_nbr_zero.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    snprintf(expected, sizeof(expected), "%d", 0);
+    assert(strcmp(buffer, expected) == 0);
+    close(fd);
+    unlink("test_nbr_zero.txt");
+
+    // Teste 4: INT_MAX
+    fd = open("test_nbr_max.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putnbr_fd(INT_MAX, fd);
+    close(fd);
+
+    fd = open("test_nbr_max.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    snprintf(expected, sizeof(expected), "%d", INT_MAX);
+    assert(strcmp(buffer, expected) == 0);
+    close(fd);
+    unlink("test_nbr_max.txt");
+
+    // Teste 5: INT_MIN
+    fd = open("test_nbr_min.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putnbr_fd(INT_MIN, fd);
+    close(fd);
+
+    fd = open("test_nbr_min.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    snprintf(expected, sizeof(expected), "%d", INT_MIN);
+    assert(strcmp(buffer, expected) == 0);
+    close(fd);
+    unlink("test_nbr_min.txt");
+
+    // Teste 6: Saída para stdout (fd 1) - verificação visual
+    ft_putnbr_fd(123, 1);
+    write(1, "\n", 1); // Adiciona uma nova linha para melhor visualização
+
+    // Teste 7: Saída para stderr (fd 2) - verificação visual
+    ft_putnbr_fd(-456, 2);
+    write(2, "\n", 1); // Adiciona uma nova linha para melhor visualização
+
+    printf("OK\n");
 }
 
 void test_ft_putendl_fd(void)
