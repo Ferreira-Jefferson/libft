@@ -36,6 +36,7 @@ void	test_ft_strjoin(void);
 void	test_ft_strtrim(void);
 void	test_ft_split(void);
 void	test_ft_itoa(void);
+void	test_ft_strmapi(void);
 
 int	main(void)
 {
@@ -71,9 +72,49 @@ int	main(void)
 	test_ft_strtrim();
 	test_ft_split();
 	test_ft_itoa();
+	test_ft_strmapi();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+char pass_to_1_if_odd_or_subsequent_char(unsigned int index, char sub)
+{
+	if(index & 0b1)
+		return ('1');
+	return (sub + 1);
+}
+void	test_ft_strmapi(void)
+{
+	printf("ft_strmapi: ");
+
+	// s1 nula
+	char *s = NULL;
+	char *result = ft_strmapi(s, pass_to_1_if_odd_or_subsequent_char);
+    assert(result == NULL);
+
+	// s1 vazia
+	s = ft_strdup("");
+	result = ft_strmapi(s, pass_to_1_if_odd_or_subsequent_char);
+    assert(strcmp(result, "") == 0);
+    free(s);
+    free(result);
+
+	// s1 com um char
+	s = ft_strdup("1");
+	result = ft_strmapi(s, pass_to_1_if_odd_or_subsequent_char);
+    assert(strcmp(result, "2") == 0);
+    free(s);
+    free(result);
+
+	// s1 n char
+	s = ft_strdup("12345");
+	result = ft_strmapi(s, pass_to_1_if_odd_or_subsequent_char);
+    assert(strcmp(result, "21416") == 0);
+    free(s);
+    free(result);
+
+	printf("OK\n");
 }
 
 void    test_ft_itoa(void)
@@ -134,7 +175,6 @@ void    test_ft_split(void)
     c = ' ';
     splited_list = ft_split(s1, c);
     assert(splited_list == NULL);
-    
 
     // s1 vazia
     s1 = ft_strdup("");
