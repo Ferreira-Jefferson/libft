@@ -42,6 +42,7 @@ void	test_ft_itoa(void);
 void	test_ft_strmapi(void);
 void	test_ft_putchar_fd(void);
 void	test_ft_putstr_fd(void);
+void	test_ft_putendl_fd(void);
 
 int	main(void)
 {
@@ -80,9 +81,57 @@ int	main(void)
 	test_ft_strmapi();
 	test_ft_putchar_fd();
 	test_ft_putstr_fd();
+	test_ft_putendl_fd();
+	test_ft_putendl_fd();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void test_ft_putendl_fd(void)
+{
+    printf("ft_putendl_fd: ");
+
+    int     fd;
+    char    buffer[50]; // Buffer para ler o conteúdo do arquivo
+    ssize_t bytes_read;
+
+    // Teste 1: Escrever uma string com quebra de linha em um arquivo
+    fd = open("test_endl_output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putendl_fd("Hello, Line!", fd);
+    close(fd);
+
+    fd = open("test_endl_output.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    assert(strcmp(buffer, "Hello, Line!\n") == 0); // Espera-se uma quebra de linha
+    close(fd);
+    unlink("test_endl_output.txt"); // Limpa o arquivo de teste
+
+    // Teste 2: Escrever uma string vazia com quebra de linha
+    fd = open("test_empty_endl_output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putendl_fd("", fd);
+    close(fd);
+
+    fd = open("test_empty_endl_output.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    assert(strcmp(buffer, "\n") == 0); // Espera-se apenas a quebra de linha
+    close(fd);
+    unlink("test_empty_endl_output.txt"); // Limpa o arquivo de teste
+
+    // Teste 3: Escrever NULL (não deve crashar)
+    ft_putendl_fd(NULL, 1); // Não deve crashar, mas não escreve nada além da newline
+
+    // Teste 4: Escrever para stdout (fd 1) com quebra de linha
+    ft_putendl_fd("Output to stdout with newline", 1);
+
+    // Teste 5: Escrever para stderr (fd 2) com quebra de linha
+    ft_putendl_fd("Output to stderr with newline", 2);
+
+    printf("OK\n");
 }
 
 void test_ft_putstr_fd(void)
