@@ -40,7 +40,8 @@ void	test_ft_strtrim(void);
 void	test_ft_split(void);
 void	test_ft_itoa(void);
 void	test_ft_strmapi(void);
-void test_ft_putchar_fd(void);
+void	test_ft_putchar_fd(void);
+void	test_ft_putstr_fd(void);
 
 int	main(void)
 {
@@ -78,12 +79,61 @@ int	main(void)
 	test_ft_itoa();
 	test_ft_strmapi();
 	test_ft_putchar_fd();
+	test_ft_putstr_fd();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
 }
 
+void test_ft_putstr_fd(void)
+{
+    printf("ft_putstr_fd: ");
 
+    int     fd;
+    char    buffer[50]; // Buffer para ler o conteúdo do arquivo
+    ssize_t bytes_read;
+
+    // Teste 1: Escrever uma string em um arquivo
+    fd = open("test_str_output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putstr_fd("Hello, World!", fd);
+    close(fd);
+
+    fd = open("test_str_output.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    assert(strcmp(buffer, "Hello, World!") == 0);
+    close(fd);
+    unlink("test_str_output.txt"); // Limpa o arquivo de teste
+
+    // Teste 2: Escrever uma string vazia
+    fd = open("test_empty_str_output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putstr_fd("", fd);
+    close(fd);
+
+    fd = open("test_empty_str_output.txt", O_RDONLY);
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    buffer[bytes_read] = '\0';
+    assert(strcmp(buffer, "") == 0);
+    close(fd);
+    unlink("test_empty_str_output.txt"); // Limpa o arquivo de teste
+
+    // Teste 3: Escrever NULL (deve ser tratado pela função ou resultar em NULL)
+	ft_putstr_fd(NULL, 1); // Não deve crashar
+
+    // Teste 4: Escrever para stdout (fd 1)
+    // Este teste imprimirá "Output to stdout" no console.
+    // A verificação é visual.
+    ft_putstr_fd("Output to stdout\n", 1);
+
+    // Teste 5: Escrever para stderr (fd 2)
+    // Este teste imprimirá "Output to stderr" no console de erro.
+    // A verificação é visual.
+    ft_putstr_fd("Output to stderr\n", 2);
+
+    printf("OK\n");
+}
 void test_ft_putchar_fd(void)
 {
     printf("ft_putchar_fd: ");
