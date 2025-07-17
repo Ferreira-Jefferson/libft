@@ -78,6 +78,55 @@ int	main(void)
 	return (0);
 }
 
+static void set_to_one_if_odd(unsigned int index, char *c)
+{
+    if (index % 2 != 0)
+        *c = '1';
+}
+
+static void increment_char(unsigned int index, char *c)
+{
+    (void)index; // Ignora o índice, pois não é usado nesta função
+    (*c)++;
+}
+
+void    test_ft_striteri(void)
+{
+    printf("ft_striteri: ");
+
+    char *s;
+
+    // Teste com string nula
+    s = NULL;
+    ft_striteri(s, set_to_one_if_odd); // Não deve falhar, apenas não fazer nada
+
+    // Teste com string vazia
+    s = ft_strdup("");
+    ft_striteri(s, set_to_one_if_odd);
+    assert(strcmp(s, "") == 0);
+    free(s);
+
+    // Teste com uma palavra e set_to_one_if_odd
+    s = ft_strdup("abcde");
+    ft_striteri(s, set_to_one_if_odd);
+    assert(strcmp(s, "a1c1e") == 0);
+    free(s);
+
+    // Teste com uma palavra e increment_char
+    s = ft_strdup("abc");
+    ft_striteri(s, increment_char);
+    assert(strcmp(s, "bcd") == 0);
+    free(s);
+
+    // Teste com string vazia e increment_char
+    s = ft_strdup("");
+    ft_striteri(s, increment_char);
+    assert(strcmp(s, "") == 0);
+    free(s);
+
+    printf("OK\n");
+}
+
 char pass_to_1_if_odd_or_subsequent_char(unsigned int index, char sub)
 {
 	if(index & 0b1)
