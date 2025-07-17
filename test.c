@@ -5,6 +5,9 @@
 #include <limits.h>
 #include "libft.h"
 #include <bsd/string.h>
+#include <fcntl.h> // Para open
+#include <unistd.h> // Para close, unlink
+
 
 void	test_ft_isupper(void);
 void	test_ft_islower(void);
@@ -37,6 +40,7 @@ void	test_ft_strtrim(void);
 void	test_ft_split(void);
 void	test_ft_itoa(void);
 void	test_ft_strmapi(void);
+void test_ft_putchar_fd(void);
 
 int	main(void)
 {
@@ -73,9 +77,57 @@ int	main(void)
 	test_ft_split();
 	test_ft_itoa();
 	test_ft_strmapi();
+	test_ft_putchar_fd();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+
+void test_ft_putchar_fd(void)
+{
+    printf("ft_putchar_fd: ");
+
+    int     fd;
+    char    buffer[2];
+
+    // Teste 1: Escrever um caractere em um arquivo
+    fd = open("test_output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putchar_fd('A', fd);
+    close(fd);
+
+    fd = open("test_output.txt", O_RDONLY);
+    read(fd, buffer, 1);
+    buffer[1] = '\0';
+    assert(strcmp(buffer, "A") == 0);
+    close(fd);
+    unlink("test_output.txt"); // Limpa o arquivo de teste
+
+    // Teste 2: Escrever outro caractere em um arquivo diferente
+    fd = open("test_another_test.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    assert(fd != -1);
+    ft_putchar_fd('Z', fd);
+    close(fd);
+
+    fd = open("test_another_test.txt", O_RDONLY);
+    read(fd, buffer, 1);
+    buffer[1] = '\0';
+    assert(strcmp(buffer, "Z") == 0);
+    close(fd);
+    unlink("test_another_test.txt"); // Limpa o arquivo de teste
+
+    // Teste 3: Escrever para stdout (fd 1)
+    // Este teste imprimirá ':' no console.
+    // A verificação é visual, pois capturar stdout é mais complexo.
+    ft_putchar_fd(':', 1);
+
+    // Teste 4: Escrever para stderr (fd 2)
+    // Este teste imprimirá ':' no console de erro.
+    // A verificação é visual.
+    ft_putchar_fd(':', 2);
+
+    printf("OK\n");
 }
 
 static void set_to_one_if_odd(unsigned int index, char *c)
