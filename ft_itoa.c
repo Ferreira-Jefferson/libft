@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:33:57 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/18 13:44:48 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:27:57 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_itoa(int n)
 	nb = n;
 	if (n < 0)
 		nb = n * -1;
-	count_decimal_places = 1;
+	count_decimal_places = (n == 0);
 	nb_count = nb;
 	while (nb_count > 0)
 	{
