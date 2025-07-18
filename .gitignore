@@ -4,3 +4,4 @@ test*
 Makefile.study
 objs
 .vscode
+a.out
