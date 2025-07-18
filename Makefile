@@ -1,7 +1,7 @@
 NAME = libft.a
 LIB = ./
 
-MANDATORY_SRC 	= ft_isalnum.c	ft_isalpha.c	ft_isascii.c	ft_isdigit.c \
+MANDATORY_SRC 	= 	ft_isalnum.c	ft_isalpha.c	ft_isascii.c	ft_isdigit.c \
 					ft_isprint.c	ft_tolower.c	ft_toupper.c	ft_atoi.c \
 					ft_memcmp.c		ft_strncmp.c	ft_itoa.c		ft_strdup.c \
 					ft_split.c		ft_strchr.c		ft_strrchr.c	ft_strjoin.c \
@@ -11,9 +11,10 @@ MANDATORY_SRC 	= ft_isalnum.c	ft_isalpha.c	ft_isascii.c	ft_isdigit.c \
 					ft_memcpy.c		ft_memmove.c	ft_striteri.c	ft_strlen.c \
 					ft_strlcpy.c	ft_strlcat.c
 			
-BONUS_SRC 		= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c
+BONUS_SRC 		= 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+					ft_lstadd_back.c
 
-EXTRA_SRC 		= ft_isspace.c ft_isupper.c ft_islower.c ft_strstr.c
+EXTRA_SRC 		= 	ft_isspace.c ft_isupper.c ft_islower.c ft_strstr.c
 
 MANDATORY_OBJ 	= $(MANDATORY_SRC:.c=.o)
 BONUS_OBJ 		= $(BONUS_SRC:.c=.o)
