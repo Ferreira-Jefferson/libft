@@ -50,9 +50,6 @@ int	main(void)
 {
 	printf("\n\n*************** TESTS ***************\n\n");
 
-	ft_putnbr_fd(INT_MIN, 1);
-	printf("\n");
-	return (0);
 	test_ft_isupper();
 	test_ft_islower();
 	test_ft_toupper();
@@ -608,7 +605,6 @@ void	test_ft_strjoin(void)
 	char s1_not_str[] = {'N', 'O', 'T'};
 	char s2_not_str[] = {'S', 'T', 'R', 'I', 'N', 'G'};
 	ft_strjoin(s1_not_str, s2_not_str);
-	assert(s1_not_str); // Comportamento indefinido
 
 	//cenario perfeito
 	s1 = ft_strdup("Hello");
@@ -1111,8 +1107,7 @@ void	test_ft_strlcpy(void)
     char src2[] = "abc"; 
     char dst2[5]; 
     size_t len_src2 = ft_strlcpy(dst2, src2, 0);
-     assert(dst2[0] != 'a'); 
-     assert(dst2[0] == '\0'); 
+    assert(dst2[0] != 'a'); 
     assert(len_src2 == strlen(src2));
     
     // Cenário 3: dstsize = 1 (apenas espaço para \0)
