@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/19 12:51:07 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/19 13:52:43 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ int		ft_islower(int c);
 int		ft_isupper(int c);
 char	*ft_strstr(const char *big, const char *little);
 void	ft_putchar(char c);
+
 #endif
