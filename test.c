@@ -45,6 +45,15 @@ void	test_ft_putstr_fd(void);
 void	test_ft_putendl_fd(void);
 void	test_ft_putnbr_fd(void);
 void	test_ft_putnbr_fd(void);
+void 	test_ft_lstadd_back(void);
+void 	test_ft_lstdelone(void);
+void 	test_ft_lstclear(void);
+void 	test_ft_lstiter(void);
+void 	test_ft_lstmap(void);
+void 	test_ft_lstnew(void);
+void 	test_ft_lstadd_front(void);
+void 	test_ft_lstsize(void);
+void 	test_ft_lstlast(void);
 
 int	main(void)
 {
@@ -86,9 +95,293 @@ int	main(void)
 	test_ft_putendl_fd();
 	test_ft_putendl_fd();
 	test_ft_putnbr_fd();
+	test_ft_lstadd_back();
+	test_ft_lstdelone();
+	test_ft_lstclear();
+	test_ft_lstiter();
+	test_ft_lstmap();
+	test_ft_lstnew();
+	test_ft_lstadd_front();
+	test_ft_lstsize();
+	test_ft_lstlast();
 
 	printf("\n*************** TESTS OK ************\n");
 	return (0);
+}
+
+void del_content_test(void *content)
+{
+    free(content);
+}
+
+// test_ft_lstadd_back
+void test_ft_lstadd_back(void)
+{
+    printf("ft_lstadd_back: ");
+
+    t_list *lst = NULL;
+    t_list *node1 = ft_lstnew(strdup("node1"));
+    t_list *node2 = ft_lstnew(strdup("node2"));
+    t_list *node3 = ft_lstnew(strdup("node3"));
+
+    ft_lstadd_back(&lst, node1);
+    assert(strcmp(lst->content, "node1") == 0);
+    assert(lst->next == NULL);
+
+    ft_lstadd_back(&lst, node2);
+    assert(strcmp(lst->content, "node1") == 0);
+    assert(strcmp(lst->next->content, "node2") == 0);
+    assert(lst->next->next == NULL);
+
+    ft_lstadd_back(&lst, node3);
+    assert(strcmp(lst->content, "node1") == 0);
+    assert(strcmp(lst->next->content, "node2") == 0);
+    assert(strcmp(lst->next->next->content, "node3") == 0);
+    assert(lst->next->next->next == NULL);
+
+    // Liberar a lista (necessário para evitar vazamento de memória nos testes)
+    t_list *current;
+    while (lst)
+    {
+        current = lst;
+        lst = lst->next;
+        free(current->content);
+        free(current);
+    }
+
+    printf("OK\n");
+}
+
+// test_ft_lstdelone
+void test_ft_lstdelone(void)
+{
+    printf("ft_lstdelone: ");
+
+    char *str = strdup("Hello World");
+    t_list *node = ft_lstnew(str);
+
+    ft_lstdelone(node, del_content_test);
+
+    // Não há como assert o freed content diretamente, mas podemos verificar o ponteiro
+    // assumindo que a função não falhou. Teste mais robusto precisaria de mocks ou sanitizers.
+    // Apenas verificamos que o programa não crashou até aqui.
+
+    printf("OK\n");
+}
+
+// test_ft_lstclear
+void test_ft_lstclear(void)
+{
+    printf("ft_lstclear: ");
+
+    t_list *lst = NULL;
+    ft_lstadd_back(&lst, ft_lstnew(strdup("node1")));
+    ft_lstadd_back(&lst, ft_lstnew(strdup("node2")));
+    ft_lstadd_back(&lst, ft_lstnew(strdup("node3")));
+
+    ft_lstclear(&lst, del_content_test);
+    assert(lst == NULL);
+
+    // Tentar limpar uma lista nula não deve causar crash
+    ft_lstclear(&lst, del_content_test);
+    assert(lst == NULL);
+
+    printf("OK\n");
+}
+
+// Função auxiliar para ft_lstiter e ft_lstmap
+void capitalize_content(void *content)
+{
+    char *s = (char *)content;
+    while (*s)
+    {
+        if (*s >= 'a' && *s <= 'z')
+        {
+            *s = *s - 32;
+        }
+        s++;
+    }
+}
+
+// test_ft_lstiter
+void test_ft_lstiter(void)
+{
+    printf("ft_lstiter: ");
+
+    t_list *lst = NULL;
+    char *s1 = strdup("hello");
+    char *s2 = strdup("world");
+    char *s3 = strdup("c");
+
+    ft_lstadd_back(&lst, ft_lstnew(s1));
+    ft_lstadd_back(&lst, ft_lstnew(s2));
+    ft_lstadd_back(&lst, ft_lstnew(s3));
+
+    ft_lstiter(lst, capitalize_content);
+
+    assert(strcmp(lst->content, "HELLO") == 0);
+    assert(strcmp(lst->next->content, "WORLD") == 0);
+    assert(strcmp(lst->next->next->content, "C") == 0);
+
+    ft_lstclear(&lst, del_content_test);
+
+    printf("OK\n");
+}
+
+// Função auxiliar para ft_lstmap
+void *duplicate_and_capitalize(void *content)
+{
+    if (!content)
+        return NULL;
+    char *original = (char *)content;
+    char *new_str = strdup(original);
+    if (!new_str)
+        return NULL;
+    capitalize_content(new_str);
+    return new_str;
+}
+
+// test_ft_lstmap
+void test_ft_lstmap(void)
+{
+    printf("ft_lstmap: ");
+
+    t_list *lst = NULL;
+    ft_lstadd_back(&lst, ft_lstnew(strdup("apple")));
+    ft_lstadd_back(&lst, ft_lstnew(strdup("banana")));
+    ft_lstadd_back(&lst, ft_lstnew(strdup("cherry")));
+
+    t_list *new_list = ft_lstmap(lst, duplicate_and_capitalize, del_content_test);
+
+    assert(new_list != NULL);
+    assert(strcmp(new_list->content, "APPLE") == 0);
+    assert(strcmp(new_list->next->content, "BANANA") == 0);
+    assert(strcmp(new_list->next->next->content, "CHERRY") == 0);
+    assert(new_list->next->next->next == NULL);
+
+    // Certifique-se de que a lista original não foi modificada
+    assert(strcmp(lst->content, "apple") == 0);
+    assert(strcmp(lst->next->content, "banana") == 0);
+    assert(strcmp(lst->next->next->content, "cherry") == 0);
+
+    // Liberar ambas as listas
+    ft_lstclear(&lst, del_content_test);
+    ft_lstclear(&new_list, del_content_test);
+
+    printf("OK\n");
+}
+
+void test_ft_lstnew(void)
+{
+    printf("ft_lstnew: ");
+
+    t_list *node;
+    char *str1 = "Hello";
+    int num1 = 123;
+
+    node = ft_lstnew(str1);
+    assert(node != NULL);
+    assert(node->content == str1);
+    assert(node->next == NULL);
+    free(node);
+
+    node = ft_lstnew(&num1);
+    assert(node != NULL);
+    assert(node->content == &num1);
+    assert(node->next == NULL);
+    free(node);
+
+    node = ft_lstnew(NULL);
+    assert(node != NULL);
+    assert(node->content == NULL);
+    assert(node->next == NULL);
+    free(node);
+
+    printf("OK\n");
+}
+
+void test_ft_lstadd_front(void)
+{
+    printf("ft_lstadd_front: ");
+
+    t_list *lst = NULL;
+    t_list *node1 = ft_lstnew("node1");
+    t_list *node2 = ft_lstnew("node2");
+    t_list *node3 = ft_lstnew("node3");
+
+    ft_lstadd_front(&lst, node1);
+    assert(lst == node1);
+    assert(lst->next == NULL);
+
+    ft_lstadd_front(&lst, node2);
+    assert(lst == node2);
+    assert(lst->next == node1);
+
+    ft_lstadd_front(&lst, node3);
+    assert(lst == node3);
+    assert(lst->next == node2);
+    assert(lst->next->next == node1);
+    assert(lst->next->next->next == NULL);
+
+    free(node1);
+    free(node2);
+    free(node3);
+
+    printf("OK\n");
+}
+
+void test_ft_lstsize(void)
+{
+    printf("ft_lstsize: ");
+
+    t_list *lst = NULL;
+    t_list *node1 = ft_lstnew("node1");
+    t_list *node2 = ft_lstnew("node2");
+    t_list *node3 = ft_lstnew("node3");
+
+    assert(ft_lstsize(lst) == 0);
+
+    ft_lstadd_front(&lst, node1);
+    assert(ft_lstsize(lst) == 1);
+
+    ft_lstadd_front(&lst, node2);
+    assert(ft_lstsize(lst) == 2);
+
+    ft_lstadd_front(&lst, node3);
+    assert(ft_lstsize(lst) == 3);
+
+    free(node1);
+    free(node2);
+    free(node3);
+
+    printf("OK\n");
+}
+
+void test_ft_lstlast(void)
+{
+    printf("ft_lstlast: ");
+
+    t_list *lst = NULL;
+    t_list *node1 = ft_lstnew("node1");
+    t_list *node2 = ft_lstnew("node2");
+    t_list *node3 = ft_lstnew("node3");
+
+    assert(ft_lstlast(lst) == NULL);
+
+    ft_lstadd_front(&lst, node1);
+    assert(ft_lstlast(lst) == node1);
+
+    ft_lstadd_front(&lst, node2);
+    assert(ft_lstlast(lst) == node1);
+
+    ft_lstadd_front(&lst, node3);
+    assert(ft_lstlast(lst) == node1);
+
+    free(node1);
+    free(node2);
+    free(node3);
+
+    printf("OK\n");
 }
 
 void test_ft_putnbr_fd(void)
@@ -276,6 +569,7 @@ void test_ft_putstr_fd(void)
 
     printf("OK\n");
 }
+
 void test_ft_putchar_fd(void)
 {
     printf("ft_putchar_fd: ");
@@ -377,6 +671,7 @@ char pass_to_1_if_odd_or_subsequent_char(unsigned int index, char sub)
 		return ('1');
 	return (sub + 1);
 }
+
 void	test_ft_strmapi(void)
 {
 	printf("ft_strmapi: ");
