@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:08:55 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/18 18:14:42 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/19 07:04:48 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*to_free;
-	
+
 	while (*lst)
 	{
 		to_free = *lst;
