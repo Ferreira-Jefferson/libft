@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 07:47:08 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 08:16:33 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/19 12:42:56 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_toupper(int c)
 {
-	if (ft_islower(c))
+	if (c >= 'a' && c <= 'z')
 		return (c - 32);
 	return (c);
 }

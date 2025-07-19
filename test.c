@@ -59,6 +59,9 @@ int	main(void)
 {
 	printf("\n\n*************** TESTS ***************\n\n");
 
+	printf("itoa: %s\n", ft_itoa(-12));
+	printf("itoa: %s\n\n", ft_itoa(12));
+	return (0);
 	test_ft_isupper();
 	test_ft_islower();
 	test_ft_toupper();

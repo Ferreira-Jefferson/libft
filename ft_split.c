@@ -6,13 +6,13 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 09:30:12 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/16 15:56:36 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/19 12:41:14 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_matrix(char **matrix)
+static void	free_matrix(char **matrix)
 {
 	char	**aux;
 
@@ -25,7 +25,7 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-char	**create_matriz(char const *s, char c)
+static char	**create_matriz(char const *s, char c)
 {
 	int		word_count;
 	char	**matrix;
@@ -51,7 +51,7 @@ char	**create_matriz(char const *s, char c)
 	return (matrix);
 }
 
-char	*fill_matrix(char const *s, char c)
+static char	*fill_matrix(char const *s, char c)
 {
 	size_t	size;
 	char	*aux_s;
@@ -66,7 +66,7 @@ char	*fill_matrix(char const *s, char c)
 	return (ft_substr(s, 0, size));
 }
 
-int	populate_matrix(char **matrix, char const *s, char c)
+static int	populate_matrix(char **matrix, char const *s, char c)
 {
 	size_t	i;
 
