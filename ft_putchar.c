@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 12:49:30 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/19 12:50:30 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/19 14:51:14 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
