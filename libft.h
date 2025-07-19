@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/19 07:17:30 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/19 12:51:07 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
-int		ft_isspace(int c);
-int		ft_islower(int c);
-int		ft_isupper(int c);
-char	*ft_strstr(const char *big, const char *little);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -72,4 +67,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+int		ft_isspace(int c);
+int		ft_islower(int c);
+int		ft_isupper(int c);
+char	*ft_strstr(const char *big, const char *little);
+void	ft_putchar(char c);
 #endif
