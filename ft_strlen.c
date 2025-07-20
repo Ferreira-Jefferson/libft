@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:32 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/20 08:24:05 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/20 13:09:38 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	size;
 
-	if (!s)
-		return (0);
 	size = 0;
 	while (s[size])
 		size++;
