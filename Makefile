@@ -29,14 +29,15 @@ FLAGS = -Wall -Werror -Wextra -g
 
 all: $(NAME)
 
-$(NAME): $(MANDATORY_OBJ) $(BONUS_OBJ) $(EXTRA_OBJ)
-	$(AR_COMMAND) $(NAME) $(MANDATORY_OBJ) $(BONUS_OBJ) $(EXTRA_OBJ)
-	mkdir -p $(OBJS_DIR)
-	mv *.o $(OBJS_DIR)
+$(NAME): mandatory
 
-bonus: $(BONUS_OBJ)
+mandatory: $(MANDATORY_OBJ)
 
-extra: $(EXTRA_OBJ)
+bonus:
+	@$(MAKE) MANDATORY_OBJ="$(MANDATORY_OBJ) $(BONUS_OBJ)"
+
+extra:
+	@$(MAKE) MANDATORY_OBJ="$(MANDATORY_OBJ) $(BONUS_OBJ) $(EXTRA_OBJ)"
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) -I $(LIB)  $< -o $@ 
