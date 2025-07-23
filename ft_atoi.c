@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:00:18 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 18:39:46 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:49:47 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *nptr)
 
 	if (*nptr == '\0')
 		return (0);
-	while (ft_isspace(*nptr))
+	while (*nptr == ' ' || (*nptr >= '\t' && *nptr <= '\r'))
 		nptr++;
 	signal = 1;
 	if (*nptr == '+' || *nptr == '-' )

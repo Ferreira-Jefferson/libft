@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:51:42 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/14 09:18:47 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:43:29 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	src_size;
 	size_t	i;
 
+	if (!dstsize)
+		return (ft_strlen(src));
 	i = 0;
 	src_size = ft_strlen(src);
 	dst_size = ft_strlen(dst);

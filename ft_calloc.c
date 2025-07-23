@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:31:30 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/14 17:34:56 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/23 11:31:32 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_calloc(size_t number, size_t size)
 {
 	void	*p;
 
+	if (!size || !number)
+		return (ft_strdup(""));
 	if (size && number > (size_t)-1 / size)
 		return (NULL);
 	p = (void *) malloc(number * size);
