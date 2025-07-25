@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "memoryft.h"
 
 void	*ft_memchr(const void *b, int c, size_t len)
 {

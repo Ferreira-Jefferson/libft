@@ -1,4 +1,4 @@
-#ifdef LIST_FT_H
+#ifndef LIST_FT_H
 # define LIST_FT_H
 
 #include <stdlib.h>

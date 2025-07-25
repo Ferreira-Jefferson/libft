@@ -12,16 +12,17 @@ CFLAGS = -Wall -Werror -Wextra -g
 all: $(NAME)
 
 $(NAME): $(LIBFT_OBJ)
-    ar rcs $@ $^
+	ar rcs $(NAME) $(LIBFT_OBJ)
+	rm -f $(LIBFT_OBJ)
 
 %.o: %.c
-    $(CC) $(CFLAGS) -I. -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-    rm -f $(LIBFT_OBJ)
+	rm -f $(LIBFT_OBJ)
 
 fclean: clean
-    rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

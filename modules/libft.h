@@ -13,12 +13,12 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+#include "memory/memoryft.h"
+#include "string/stringft.h"
 #include "allocation/allocationft.h"
 #include "character/characterft.h"
 #include "conversion/conversionft.h"
 #include "list/listft.h"
-#include "memory/memoryft.h"
 #include "output/outputft.h"
-#include "string/stringft.h"
 
 #endif

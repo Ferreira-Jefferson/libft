@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "memoryft.h"
 
 void	ft_bzero(void *b, size_t len)
 {
