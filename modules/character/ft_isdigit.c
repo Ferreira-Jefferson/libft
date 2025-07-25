@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:38 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 08:15:17 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:00:35 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "characterft.h"
 
 int	ft_isdigit(int c)
 {

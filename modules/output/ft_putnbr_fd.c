@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:32:09 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/17 14:22:19 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/25 12:49:33 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "outputft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

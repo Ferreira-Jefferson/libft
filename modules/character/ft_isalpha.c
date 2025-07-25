@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 13:32:09 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/25 12:49:33 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/07/11 07:43:00 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/07/25 13:00:32 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdft.h"
+#include "characterft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_isalpha(int c)
 {
-	unsigned int	nb;
-
-	nb = n;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		nb = n * -1;
-	}
-	if (nb >= 10)
-		ft_putnbr_fd((nb / 10), fd);
-	ft_putchar_fd((nb % 10) + '0', fd);
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "numberft.h"
+#include "conversionft.h"
 
 int	ft_atoi(const char *nptr)
 {

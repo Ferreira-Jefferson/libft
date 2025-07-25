@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 07:43:04 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/25 13:00:34 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/07/17 13:03:59 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/07/25 12:49:37 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stringft.h"
+#include "outputft.h"
 
-int	ft_isascii(int c)
-{	
-	return ((unsigned char)c <= 127);
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

@@ -14,10 +14,11 @@
 # define LIBFT_H
 
 #include "allocation/allocationft.h"
-#include "fd/fdft.h"
+#include "character/characterft.h"
+#include "conversion/conversionft.h"
 #include "list/listft.h"
 #include "memory/memoryft.h"
-#include "number/numberft.h"
+#include "output/outputft.h"
 #include "string/stringft.h"
 
 #endif

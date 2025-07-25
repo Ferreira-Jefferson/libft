@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islower.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 07:43:28 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/13 08:15:28 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/07/11 07:43:04 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/07/25 13:00:34 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_islower(int c)
-{
-	return (c >= 'a' && c <= 'z');
+#include "characterft.h"
+
+int	ft_isascii(int c)
+{	
+	return ((unsigned char)c <= 127);
 }

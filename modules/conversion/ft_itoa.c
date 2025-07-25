@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "numberft.h"
+#include "conversionft.h"
 
 char	*ft_itoa(int n)
 {

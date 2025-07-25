@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 07:48:26 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/19 12:43:21 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:01:55 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "characterft.h"
 
 int	ft_tolower(int c)
 {

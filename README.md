@@ -20,29 +20,29 @@ This project is part of the 42 School curriculum. It consists of re-implementing
 The project is organized as follows:
 
 ```
-libft/
-├── ft_*.c                # Standalone C source files
-├── libft.h               # Main header file
-├── Makefile              # Build script
-├── modules/              # Modularized source files
+library/
+├── modules/
 │   ├── allocation/       # Memory allocation functions
-│   ├── fd/               # File descriptor output functions
+│   ├── character/        # Character classification and conversion
+│   ├── conversion/       # String/number conversion functions
 │   ├── list/             # Linked list functions
 │   ├── memory/           # Memory manipulation functions
-│   ├── number/           # Number conversion functions
+│   ├── output/           # Output functions
 │   └── string/           # String manipulation functions
+├── libft.h               # Main header file
+├── Makefile              # Build script
 ```
 
 ## Functions
 
 The library includes re-implementations of the following standard C functions and more:
 
-- Memory: `memset`, `bzero`, `memcpy`, `memmove`, `memchr`, `memcmp`, `calloc`, `strdup`
-- String: `strlen`, `strlcpy`, `strlcat`, `strchr`, `strrchr`, `strnstr`, `strncmp`, `strjoin`, `strtrim`, `split`, `substr`, `strmapi`, `striteri`, `strdup`, `strcpy`, `strncpy`, `strcat`, `strncat`, `strstr`
-- Character: `isalpha`, `isdigit`, `isalnum`, `isascii`, `isprint`, `toupper`, `tolower`, `isspace`, `isupper`, `islower`
-- Conversion: `atoi`, `itoa`
-- Output: `putchar_fd`, `putstr_fd`, `putendl_fd`, `putnbr_fd`, `putchar`
-- Linked List: `lstnew`, `lstadd_front`, `lstadd_back`, `lstsize`, `lstlast`, `lstdelone`, `lstclear`, `lstiter`, `lstmap`
+- **Memory:** `memset`, `bzero`, `memcpy`, `memmove`, `memchr`, `memcmp`, `calloc`, `strdup`
+- **String:** `strlen`, `strlcpy`, `strlcat`, `strchr`, `strrchr`, `strnstr`, `strncmp`, `strjoin`, `strtrim`, `split`, `substr`, `strmapi`, `striteri`
+- **Character:** `isalpha`, `isdigit`, `isalnum`, `isascii`, `isprint`, `toupper`, `tolower`, `isspace`, `isupper`, `islower`
+- **Conversion:** `atoi`, `itoa`
+- **Output:** `putchar_fd`, `putstr_fd`, `putendl_fd`, `putnbr_fd`, `putchar`
+- **Linked List:** `lstnew`, `lstadd_front`, `lstadd_back`, `lstsize`, `lstlast`, `lstdelone`, `lstclear`, `lstiter`, `lstmap`
 
 All functions are implemented according to the 42 subject requirements and follow the C99 standard.
 

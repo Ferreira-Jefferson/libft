@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/13 07:47:08 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/25 13:01:57 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/07/11 07:43:35 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/07/25 13:00:41 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stringft.h"
+#include "characterft.h"
 
-int	ft_toupper(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+int	ft_isprint(int c)
+{	
+	return (c > 31 && c < 127);
 }
