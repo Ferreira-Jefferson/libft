@@ -50,7 +50,7 @@ All functions are implemented according to the 42 subject requirements and follo
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Ferreira-Jefferson/libft.git
    cd libft
    ```
 2. **Build the library:**
