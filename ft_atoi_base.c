@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 14:31:30 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/28 11:33:12 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/07/29 13:00:54 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/07/30 13:09:07 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t number, size_t size)
+int	ft_atoi_base(char *nbr, char *base)
 {
-	void	*p;
+	int	result;
+	int	base_len;
+	int	sign;
+	int	j;
 
-	if (!size || !number)
-		return (malloc(1));
-	if (size && number > (size_t)-1 / size)
-		return (NULL);
-	p = (void *) malloc(number * size);
-	if (!p)
-		return (NULL);
-	p = ft_memset(p, 0, number * size);
-	return (p);
+	result = 0;
+	base_len = ft_strlen(base);
+	sign = 1;
+	while (ft_isspace(*nbr))
+		nbr++;
+	if (*nbr == '-' || *nbr == '+')
+		if (*nbr++ == '-')
+			sign = -1;
+	while (*nbr)
+	{
+		j = 0;
+		while (base[j] && base[j] != *nbr)
+			j++;
+		if (base[j] == '\0')
+			break ;
+		result = result * base_len + j;
+		nbr++;
+	}
+	return (result * sign);
 }

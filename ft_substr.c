@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:35:54 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/15 11:50:28 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/07/27 13:29:48 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub = (char *) malloc((len + 1) * sizeof(char));
 	if (!sub)
 		return (NULL);
-	sub = ft_memcpy(sub, &s[start], len);
+	ft_memcpy(sub, &s[start], len);
 	sub[len] = '\0';
 	return (sub);
 }

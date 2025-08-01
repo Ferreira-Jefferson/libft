@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_is_valid_base.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 14:31:30 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/28 11:33:12 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/07/29 12:56:40 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/07/30 12:19:10 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t number, size_t size)
+int	ft_is_valid_base(char *base)
 {
-	void	*p;
+	int	i;
+	int	j;
 
-	if (!size || !number)
-		return (malloc(1));
-	if (size && number > (size_t)-1 / size)
-		return (NULL);
-	p = (void *) malloc(number * size);
-	if (!p)
-		return (NULL);
-	p = ft_memset(p, 0, number * size);
-	return (p);
+	if (ft_strlen(base) < 2)
+		return (0);
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == '+' || base[i] == '-' || base[i] < 32 || base[i] > 126)
+			return (0);
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

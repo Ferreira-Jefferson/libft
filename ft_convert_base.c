@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 14:31:30 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/28 11:33:12 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/07/29 12:55:19 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/07/30 12:18:10 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t number, size_t size)
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	void	*p;
+	int		number;
+	char	*result;
 
-	if (!size || !number)
-		return (malloc(1));
-	if (size && number > (size_t)-1 / size)
+	if (!ft_is_valid_base(base_from) || !ft_is_valid_base(base_to))
 		return (NULL);
-	p = (void *) malloc(number * size);
-	if (!p)
-		return (NULL);
-	p = ft_memset(p, 0, number * size);
-	return (p);
+	number = ft_atoi_base(nbr, base_from);
+	result = ft_itoa_base(number, base_to);
+	return (result);
 }

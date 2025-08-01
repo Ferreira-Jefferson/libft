@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/23 12:42:44 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:19:03 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -69,4 +67,13 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+int		ft_isspace(int c);
+int		ft_atoi_base(char *nbr, char *base);
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+int		ft_is_valid_base(char *base);
+char	*ft_itoa_base(unsigned long int nbr, char *base);
+void	ft_putunbr_fd(unsigned int n, int fd);
+void	*ft_realloc(void **alloc, size_t cur_sz, size_t new_sz, size_t t_sz);
+void	*ft_to_free(void **p);
+int		ft_count_decimal_places(long long int n);
 #endif
