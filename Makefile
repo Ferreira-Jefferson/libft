@@ -15,9 +15,9 @@ MANDATORY_SRC = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 				ft_memcpy.c ft_memmove.c ft_striteri.c ft_strlen.c \
 				ft_strlcpy.c ft_strlcat.c
 
-BONUS_SRC = ft_lstdelone_bonus.c ft_lstmap_bonus.c ft_lstclear_bonus.c \
-			ft_lstiter_bonus.c ft_lstlast_bonus.c ft_lstsize_bonus.c \
-			ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstnew_bonus.c 
+BONUS_SRC = ft_lstdelone.c ft_lstmap.c ft_lstclear.c \
+			ft_lstiter.c ft_lstlast.c ft_lstsize.c \
+			ft_lstadd_back.c ft_lstadd_front.c ft_lstnew.c 
 
 EXTRA_SRC = ft_atoi_base.c ft_convert_base.c ft_is_valid_base.c ft_itoa_base.c \
 			ft_putunbr_fd.c ft_realloc.c ft_to_free.c ft_count_decimal_places.c \
