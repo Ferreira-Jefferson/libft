@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/01 13:19:03 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/07 09:38:23 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,20 @@
 
 # include <stdlib.h>
 # include <limits.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# define OPEN_MAX 1048576
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -76,4 +84,6 @@ void	ft_putunbr_fd(unsigned int n, int fd);
 void	*ft_realloc(void **alloc, size_t cur_sz, size_t new_sz, size_t t_sz);
 void	*ft_to_free(void **p);
 int		ft_count_decimal_places(long long int n);
+char	*get_next_line(int fd);
+
 #endif

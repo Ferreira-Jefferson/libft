@@ -21,7 +21,7 @@ BONUS_SRC = ft_lstdelone_bonus.c ft_lstmap_bonus.c ft_lstclear_bonus.c \
 
 EXTRA_SRC = ft_atoi_base.c ft_convert_base.c ft_is_valid_base.c ft_itoa_base.c \
 			ft_putunbr_fd.c ft_realloc.c ft_to_free.c ft_count_decimal_places.c \
-			ft_isspace.c
+			ft_isspace.c get_next_line.c
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
 BONUS_OBJ     = $(BONUS_SRC:.c=.o)
@@ -53,6 +53,10 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+test: bonus
+	gcc main.c -L. -lft
+	./a.out
 
 re: fclean all
 
