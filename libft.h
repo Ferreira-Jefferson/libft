@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/07 10:05:20 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/07 11:07:35 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -85,5 +86,16 @@ void	*ft_realloc(void **alloc, size_t cur_sz, size_t new_sz, size_t t_sz);
 void	*ft_to_free(void **p);
 int		ft_count_decimal_places(long long int n);
 char	*get_next_line(int fd);
+int		ft_printf(const char *format, ...);
+
+// UTILS
+int		ft_print_char(va_list args);
+int		ft_print_hex_lower(va_list args);
+int		ft_print_hex_upper(va_list args);
+int		ft_print_int(va_list args);
+int		ft_print_percent(va_list args);
+int		ft_print_pointer(va_list args);
+int		ft_print_string(va_list args);
+int		ft_print_unsigned(va_list args);
 
 #endif

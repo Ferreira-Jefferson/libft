@@ -21,14 +21,7 @@ The project is organized as follows:
 
 ```
 library/
-├── modules/
-│   ├── allocation/       # Memory allocation functions
-│   ├── character/        # Character classification and conversion
-│   ├── conversion/       # String/number conversion functions
-│   ├── list/             # Linked list functions
-│   ├── memory/           # Memory manipulation functions
-│   ├── output/           # Output functions
-│   └── string/           # String manipulation functions
+├── *.c					  # Implementations
 ├── libft.h               # Main header file
 ├── Makefile              # Build script
 ```
