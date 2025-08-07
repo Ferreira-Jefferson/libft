@@ -20,8 +20,9 @@ This project is part of the 42 School curriculum. It consists of re-implementing
 The project is organized as follows:
 
 ```
-library/
-├── *.c					  # Implementations
+.
+├── *.c                   # function implementations
+├── utils/*.c             # Printf utility function implementations
 ├── libft.h               # Main header file
 ├── Makefile              # Build script
 ```
@@ -30,12 +31,37 @@ library/
 
 The library includes re-implementations of the following standard C functions and more:
 
-- **Memory:** `memset`, `bzero`, `memcpy`, `memmove`, `memchr`, `memcmp`, `calloc`, `strdup`
-- **String:** `strlen`, `strlcpy`, `strlcat`, `strchr`, `strrchr`, `strnstr`, `strncmp`, `strjoin`, `strtrim`, `split`, `substr`, `strmapi`, `striteri`
-- **Character:** `isalpha`, `isdigit`, `isalnum`, `isascii`, `isprint`, `toupper`, `tolower`, `isspace`, `isupper`, `islower`
-- **Conversion:** `atoi`, `itoa`
-- **Output:** `putchar_fd`, `putstr_fd`, `putendl_fd`, `putnbr_fd`, `putchar`
-- **Linked List:** `lstnew`, `lstadd_front`, `lstadd_back`, `lstsize`, `lstlast`, `lstdelone`, `lstclear`, `lstiter`, `lstmap`
+### Memory Functions
+- `memset`, `bzero`, `memcpy`, `memmove`, `memchr`, `memcmp`, `calloc`, `realloc`, `to_free`
+
+### String Functions
+- `strlen`, `strlcpy`, `strlcat`, `strchr`, `strrchr`, `strnstr`, `strncmp`, `strjoin`, `strtrim`, `split`, `substr`, `strmapi`, `striteri`, `strdup`
+
+### Character Functions
+- `isalpha`, `isdigit`, `isalnum`, `isascii`, `isprint`, `toupper`, `tolower`, `isspace`
+
+### Conversion Functions
+- `atoi`, `atoi_base`, `itoa`, `itoa_base`, `convert_base`, `is_valid_base`
+
+### Output Functions
+- `putchar_fd`, `putstr_fd`, `putendl_fd`, `putnbr_fd`, `putunbr_fd`
+
+### Linked List Functions (Bonus)
+- `lstnew`, `lstadd_front`, `lstadd_back`, `lstsize`, `lstlast`, `lstdelone`, `lstclear`, `lstiter`, `lstmap`
+
+### Additional Utility Functions
+- `get_next_line` - Reads a line from a file descriptor
+- `ft_printf` - Formatted output conversion
+
+### Printf Utility Functions
+- `ft_print_char` - Prints a character
+- `ft_print_string` - Prints a string
+- `ft_print_int` - Prints an integer
+- `ft_print_unsigned` - Prints an unsigned integer
+- `ft_print_hex_lower` - Prints a hexadecimal number (lowercase)
+- `ft_print_hex_upper` - Prints a hexadecimal number (uppercase)
+- `ft_print_pointer` - Prints a pointer address
+- `ft_print_percent` - Prints a percent sign
 
 All functions are implemented according to the 42 subject requirements and follow the C99 standard.
 
@@ -53,15 +79,19 @@ All functions are implemented according to the 42 subject requirements and follo
 3. **Include in your project:**
    - Add `libft.h` to your source files.
    - Link the compiled `libft.a` with your project during compilation:
-     ```bash
-     gcc your_program.c -L. -lft -o your_program
-     ```
+	 ```bash
+	 gcc your_program.c -L. -lft -o your_program
+	 ```
 
 ## Compiling
 
 - To compile the library:
   ```bash
   make
+  ```
+- To compile with bonus functions:
+  ```bash
+  make bonus
   ```
 - To clean object files:
   ```bash
