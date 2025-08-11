@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/07 11:07:35 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/10 08:12:06 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,7 @@ int		ft_print_percent(va_list args);
 int		ft_print_pointer(va_list args);
 int		ft_print_string(va_list args);
 int		ft_print_unsigned(va_list args);
+size_t	ft_binary_len(unsigned int c);
+int		ft_getindex(const char *str, unsigned char c);
 
 #endif

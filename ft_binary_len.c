@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_to_free.c                                       :+:      :+:    :+:   */
+/*   ft_binary_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 10:18:37 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/10 16:28:12 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/08/09 07:37:55 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/08/09 07:40:00 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_to_free(void **p)
+size_t	ft_binary_len(unsigned int c)
 {
-	if (*p)
+	size_t	len;
+
+	if (c == 0)
+		return (1);
+	len = 0;
+	while(c)
 	{
-		free(*p);
-		*p = NULL;
+		c >>= 1;
+		len++;
 	}
-	return (NULL);
+	return (len);
 }

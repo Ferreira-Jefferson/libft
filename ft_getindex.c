@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_to_free.c                                       :+:      :+:    :+:   */
+/*   ft_getindex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 10:18:37 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/10 16:28:12 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/08/10 08:00:22 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/08/10 08:11:33 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_to_free(void **p)
+int	ft_getindex(const char *str, unsigned char c)
 {
-	if (*p)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		free(*p);
-		*p = NULL;
+		if (str[i] == (char)c)
+			return (i);
+		i++;
 	}
-	return (NULL);
+	return (-1);
 }

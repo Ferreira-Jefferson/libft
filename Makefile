@@ -24,10 +24,10 @@ EXTRA_SRC = ft_atoi_base.c ft_convert_base.c ft_is_valid_base.c ft_itoa_base.c \
 			ft_putunbr_fd.c ft_realloc.c ft_to_free.c ft_count_decimal_places.c \
 			ft_isspace.c get_next_line.c ft_printf.c
 
-UTILS_SRC = ft_print_char.c ft_print_hex_lower.c \
-			ft_print_hex_upper.c ft_print_int.c \
-			ft_print_percent.c ft_print_pointer.c \
-			ft_print_string.c ft_print_unsigned.c
+UTILS_SRC = ft_print_char.c ft_print_hex_lower.c ft_print_hex_upper.c ft_print_int.c \
+			ft_print_percent.c ft_print_pointer.c ft_print_string.c ft_print_unsigned.c \
+			ft_binary_len.c ft_getindex.c
+
 UTILS_SRC := $(addprefix $(UTILS_DIR)/, $(UTILS_SRC))
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
